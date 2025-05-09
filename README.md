@@ -15,7 +15,7 @@ https://mlvoca.com
 
 Generates a response based on a given prompt using a specified model. It supports both streaming and single-response generation.
 
-## Available Models
+### Available Models
 - TinyLlama
 - DeepSeek R1 (1.5b)
 
@@ -26,7 +26,6 @@ Accepts the following parameters:
 - **`model` (required)** - The model name used for generation (can be `"tinyllama"` or `"deepseek-r1:1.5b"`).
 - **`prompt` (required)** - The input prompt for text generation.
 - **`suffix`** - Text appended after the model response.
-- **`images`** - Base64-encoded images (for multimodal models like `"llava"`).
 - **`format`** - Specifies the response format (`"json"` or JSON schema).
 - **`options`** - Additional model parameters (e.g., `"temperature"`).
 - **`system`** - System message override.
