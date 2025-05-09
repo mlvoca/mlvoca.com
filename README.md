@@ -1,12 +1,12 @@
 # mlvoca.com
 
-# Ollama API Hosting
+## A free LLM API
 
-This repository provides access to the `/api/generate` endpoint from the Ollama API, enabling text generation through various models.
+This repository provides access to a publicly `/api/generate` endpoint from the Ollama API, enabling text generation through various models.
 
 ## Base URL
 ```
-https://your-api-host.com
+https://mlvoca.com
 ```
 
 ## Endpoint: Generate a Completion
@@ -54,11 +54,62 @@ POST /api/generate
 
 #### Shell commands for API requests:
 ```sh
-curl -X POST https://your-api-host.com/api/generate -d '{
-  "model": "llama3.2",
+curl -X POST https://mlvoca.com/api/generate -d '{
+  "model": "tinyllama",
   "prompt": "Why is the sky blue?"
 }'
 ```
 
 ```sh
-curl -X POST https://your-api-host.com/api/generate -d
+curl -X POST https://mlvoca.com/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}'
+```
+
+### Example Responses
+
+#### Streaming response:
+```
+{
+  "model": "tinyllama",
+  "created_at": "2025-05-09T19:32:00Z",
+  "response": "The",
+  "done": false
+}
+```
+
+#### Final streamed object:
+```
+{
+  "model": "tinyllama",
+  "created_at": "2025-05-09T19:33:00Z",
+  "response": "The sky is blue due to Rayleigh scattering.",
+  "done": true,
+  "total_duration": 5043500667,
+  "load_duration": 5025959,
+  "prompt_eval_count": 26,
+  "prompt_eval_duration": 325953000,
+  "eval_count": 290,
+  "eval_duration": 4709213000
+}
+```
+
+#### Single-response output:
+```
+{
+  "model": "tinyllama",
+  "created_at": "2025-05-09T19:34:00Z",
+  "response": "The sky is blue because of Rayleigh scattering.",
+  "done": true
+}
+```
+
+## Notes
+
+- Setting `"stream": false` will return a single JSON object instead of streamed responses.
+- If `"raw": true`, no formatting is applied to the prompt.
+- Structured outputs can be requested by specifying a JSON schema in the `"format"` parameter.
+
+---
