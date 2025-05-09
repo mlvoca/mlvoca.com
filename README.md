@@ -3,11 +3,11 @@
 ## A free LLM API
 
 This repository provides access to a publicly `/api/generate` endpoint from the Ollama API, enabling text generation through various models.
-<br>
 
-<div style="border-radius: 15px; overflow: hidden;">
+<br>
+<p align="center">
     <img src="https://github.com/mlvoca/mlvoca.com/blob/main/images/mlvoca_image2.png?raw=true" style="width: 70%;">
-</div>
+</p>
 
 ## Base URL
 ```
@@ -41,33 +41,15 @@ Accepts the following parameters:
 
 ### Example Usage
 
-#### Generate text with streaming enabled:
-```
-POST /api/generate
-{
-  "model": "tinyllama",
-  "prompt": "Why is the sky blue?"
-}
-```
-
-#### Generate text without streaming:
-```
-POST /api/generate
-{
-  "model": "tinyllama",
-  "prompt": "Why is the sky blue?",
-  "stream": false
-}
-```
-
 #### Shell commands for API requests:
+Shell command with streaming enabled:
 ```sh
 curl -X POST https://mlvoca.com/api/generate -d '{
   "model": "deepseek-r1:1.5b",
   "prompt": "Why is the sky blue?"
 }'
 ```
-
+Shell command without streaming:
 ```sh
 curl -X POST https://mlvoca.com/api/generate -d '{
   "model": "tinyllama",
@@ -80,37 +62,31 @@ curl -X POST https://mlvoca.com/api/generate -d '{
 
 #### Streaming response:
 ```
-{
-  "model": "deepseek-r1:1.5b",
-  "created_at": "2025-05-09T19:32:00Z",
-  "response": "The",
-  "done": false
-}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.057589936Z","response":"\u003cthink\u003e","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.105047151Z","response":"\n","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.153911631Z","response":"Okay","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.205618283Z","response":",","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.255770562Z","response":" so","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.30646764Z","response":" I","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.35307409Z","response":" need","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.403763503Z","response":" to","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.455158427Z","response":" explain","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.509438012Z","response":" why","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.562936885Z","response":" the","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.615074831Z","response":" sky","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.669268845Z","response":" looks","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.723751905Z","response":" blue","done":false}
+...
 ```
 
-#### Final streamed object:
-```
-{
-  "model": "tinyllama",
-  "created_at": "2025-05-09T19:33:00Z",
-  "response": "The sky is blue due to Rayleigh scattering.",
-  "done": true,
-  "total_duration": 5043500667,
-  "load_duration": 5025959,
-  "prompt_eval_count": 26,
-  "prompt_eval_duration": 325953000,
-  "eval_count": 290,
-  "eval_duration": 4709213000
-}
-```
-
-#### Single-response output:
+#### Response without streaming:
 ```
 {
   "model": "tinyllama",
   "created_at": "2025-05-09T19:34:00Z",
   "response": "The sky is blue because of Rayleigh scattering.",
   "done": true
+  ...
 }
 ```
 
