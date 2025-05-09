@@ -4,7 +4,7 @@
 
 This repository provides access to a publicly `/api/generate` endpoint from the Ollama API, enabling text generation through various models.
 
-![alt text](https://github.com/mlvoca/mlvoca.com/blob/main/images/mlvoca_image.png?raw=true)
+![alt text](https://github.com/mlvoca/mlvoca.com/blob/main/images/mlvoca_image2.png?raw=true)
 
 ## Base URL
 ```
