@@ -15,11 +15,15 @@ https://mlvoca.com
 
 Generates a response based on a given prompt using a specified model. It supports both streaming and single-response generation.
 
+## Available Models
+- TinyLlama
+- DeepSeek R1 (1.5b)
+
 ### Request Parameters
 
 Accepts the following parameters:
 
-- **`model` (required)** - The model name used for generation (e.g., `"llama3.2"`).
+- **`model` (required)** - The model name used for generation (can be `"tinyllama"` or `"deepseek-r1:1.5b"`).
 - **`prompt` (required)** - The input prompt for text generation.
 - **`suffix`** - Text appended after the model response.
 - **`images`** - Base64-encoded images (for multimodal models like `"llava"`).
@@ -37,7 +41,7 @@ Accepts the following parameters:
 ```
 POST /api/generate
 {
-  "model": "llama3.2",
+  "model": "tinyllama",
   "prompt": "Why is the sky blue?"
 }
 ```
@@ -46,7 +50,7 @@ POST /api/generate
 ```
 POST /api/generate
 {
-  "model": "llama3.2",
+  "model": "tinyllama",
   "prompt": "Why is the sky blue?",
   "stream": false
 }
@@ -55,7 +59,7 @@ POST /api/generate
 #### Shell commands for API requests:
 ```sh
 curl -X POST https://mlvoca.com/api/generate -d '{
-  "model": "tinyllama",
+  "model": "deepseek-r1:1.5b",
   "prompt": "Why is the sky blue?"
 }'
 ```
@@ -73,7 +77,7 @@ curl -X POST https://mlvoca.com/api/generate -d '{
 #### Streaming response:
 ```
 {
-  "model": "tinyllama",
+  "model": "deepseek-r1:1.5b",
   "created_at": "2025-05-09T19:32:00Z",
   "response": "The",
   "done": false
@@ -105,11 +109,5 @@ curl -X POST https://mlvoca.com/api/generate -d '{
   "done": true
 }
 ```
-
-## Notes
-
-- Setting `"stream": false` will return a single JSON object instead of streamed responses.
-- If `"raw": true`, no formatting is applied to the prompt.
-- Structured outputs can be requested by specifying a JSON schema in the `"format"` parameter.
 
 ---
