@@ -93,7 +93,7 @@ curl -X POST https://mlvoca.com/api/generate -d '{
 ---
 
 ## Notes
-- The endpoint currently works without any kind of rate limit or api key. Therefore, it can be used for free without token/call limits.
+- The endpoint currently works without any kind of rate limit or API key. Therefore, it can be used for free without token/call limits.
 - The hardware resources are limited. Therefore, responses might be slow or the API might even be temporarily unavailable, especially during times of high usage.
 - We encourage scientific use of this API. Researchers, educators, and students from universities or educational institutions are encouraged to utilize this resource for scientific purposes. Please reach out to mlvoca@protonmail.com if you are planning to use the API in such a way.
 - Commercial use of this api is not allowed. If you are planning on using this API for your business, please contact mlvoca@protonmail.com.
