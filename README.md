@@ -2,7 +2,7 @@
 
 ## A free LLM API
 
-This repository provides access to a publicly `/api/generate` endpoint from the Ollama API, enabling text generation through various models.
+This API provides access to a publicly hosted `/api/generate` endpoint based on the Ollama API, enabling text generation through various models.
 
 <br>
 <p align="center">
