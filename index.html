@@ -60,6 +60,32 @@
             padding: 5px;
             border-radius: 5px;
         }
+        .code-container {
+            background-color: #282c34;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            font-family: monospace;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background: #0056b3;
+        }
         footer {
             margin-top: 30px;
             padding: 20px;
@@ -88,35 +114,30 @@
         </section>
 
         <section>
-            <h2>Endpoint: Generate a Completion</h2>
-            <h3>POST `/api/generate`</h3>
-            <p>Generates a response using the specified model and prompt.</p>
-            <h4>Available Models:</h4>
-            <ul>
-                <li>TinyLlama</li>
-                <li>DeepSeek R1 (1.5b)</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Request Parameters</h2>
-            <ul>
-                <li><strong>`model` (required):</strong> The model name (`"tinyllama"` or `"deepseek-r1:1.5b"`).</li>
-                <li><strong>`prompt` (required):</strong> Input text for text generation.</li>
-                <li><strong>`suffix`:</strong> Text appended after the response.</li>
-                <li><strong>`format`:</strong> `"json"` or schema for response formatting.</li>
-                <li><strong>`stream`:</strong> If `false`, returns a single response.</li>
-            </ul>
-        </section>
-
-        <section>
             <h2>Example Usage</h2>
-            <pre>
+            
+            <h3>Streaming Request:</h3>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('curl -X POST https://mlvoca.com/api/generate -d \\'{\\n  \\\"model\\\": \\\"deepseek-r1:1.5b\\\",\\n  \\\"prompt\\\": \\\"Why is the sky blue?\\\"\\n}\\'')">Copy</button>
+                <pre>
 curl -X POST https://mlvoca.com/api/generate -d '{
   "model": "deepseek-r1:1.5b",
   "prompt": "Why is the sky blue?"
 }'
-            </pre>
+                </pre>
+            </div>
+
+            <h3>Non-Streaming Request:</h3>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('curl -X POST https://mlvoca.com/api/generate -d \\'{\\n  \\\"model\\\": \\\"tinyllama\\\",\\n  \\\"prompt\\\": \\\"Why is the sky blue?\\\",\\n  \\\"stream\\\": false\\n}\\'')">Copy</button>
+                <pre>
+curl -X POST https://mlvoca.com/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}'
+                </pre>
+            </div>
         </section>
 
         <section>
@@ -138,5 +159,15 @@ curl -X POST https://mlvoca.com/api/generate -d '{
         <p>Visit <a href="https://mlvoca.com">mlvoca.com</a> for more details.</p>
         <p>Contact: <a href="mailto:mlvoca@protonmail.com">mlvoca@protonmail.com</a></p>
     </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard!");
+            }, () => {
+                alert("Failed to copy.");
+            });
+        }
+    </script>
 </body>
 </html>
