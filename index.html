@@ -1,1 +1,122 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free LLM API - mlvoca.com</title>
+    <meta name="description" content="Access a free LLM API for text generation with models like TinyLlama and DeepSeek R1. No API key required, no rate limits!">
+    <meta name="keywords" content="free llm api, text generation API, AI models, TinyLlama, DeepSeek R1, open-source AI">
+    <meta name="author" content="mlvoca.com">
+    <meta name="google-site-verification" content="fdyq3CHPPN3-FQjd51PCUT7FsuE-HMECoHXx_Vs0QBg">
+    <link rel="canonical" href="https://mlvoca.com">
+    <meta property="og:title" content="Free LLM API - mlvoca.com">
+    <meta property="og:description" content="Generate text using free AI models like TinyLlama and DeepSeek R1. No API key required, easy integration.">
+    <meta property="og:image" content="https://github.com/mlvoca/mlvoca.com/blob/main/images/mlvoca_image2.png?raw=true">
+    <meta property="og:url" content="https://mlvoca.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free LLM API - mlvoca.com">
+    <meta name="twitter:description" content="Try the free LLM API for AI-powered text generation with no rate limits.">
+    <meta name="twitter:image" content="https://github.com/mlvoca/mlvoca.com/blob/main/images/mlvoca_image2.png?raw=true">
+</head>
+<body>
+    <header>
+        <h1>Free LLM API - mlvoca.com</h1>
+        <p>Unlock AI-powered text generation with no API key required.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>What is mlvoca.com?</h2>
+            <p>mlvoca.com provides an open-access LLM API powered by models like TinyLlama and DeepSeek R1.</p>
+        </section>
+
+        <section>
+            <h2>Base URL</h2>
+            <code>https://mlvoca.com</code>
+        </section>
+
+        <section>
+            <h2>Endpoint: Generate a Completion</h2>
+            <h3>POST `/api/generate`</h3>
+            <p>Generates a response using the specified model and prompt.</p>
+            <h4>Available Models:</h4>
+            <ul>
+                <li>TinyLlama</li>
+                <li>DeepSeek R1 (1.5b)</li>
+            </ul>
+
+            <h4>Request Parameters</h4>
+            <ul>
+                <li><strong>`model` (required):</strong> The model name (`"tinyllama"` or `"deepseek-r1:1.5b"`).</li>
+                <li><strong>`prompt` (required):</strong> Input text for text generation.</li>
+                <li><strong>`suffix`:</strong> Text appended after the response.</li>
+                <li><strong>`format`:</strong> `"json"` or schema for response formatting.</li>
+                <li><strong>`options`:</strong> Additional model parameters (e.g., `"temperature"`).</li>
+                <li><strong>`system`:</strong> System message override.</li>
+                <li><strong>`template`:</strong> Custom prompt template.</li>
+                <li><strong>`stream`:</strong> If `false`, returns a single response.</li>
+                <li><strong>`raw`:</strong> If `true`, bypasses formatting.</li>
+                <li><strong>`keep_alive`:</strong> Model memory duration (default: `"5m"`).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Example Usage</h2>
+            <h3>Streaming:</h3>
+            <pre>
+curl -X POST https://mlvoca.com/api/generate -d '{
+  "model": "deepseek-r1:1.5b",
+  "prompt": "Why is the sky blue?"
+}'
+            </pre>
+            <h3>Non-Streaming:</h3>
+            <pre>
+curl -X POST https://mlvoca.com/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}'
+            </pre>
+        </section>
+
+        <section>
+            <h2>Response Examples</h2>
+            <h3>Streaming Response:</h3>
+            <pre>
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.057Z","response":"\u003cthink\u003e","done":false}
+{"model":"deepseek-r1:1.5b","created_at":"2025-05-09T21:27:21.105Z","response":"Okay","done":false}
+            </pre>
+            <h3>Non-Streaming Response:</h3>
+            <pre>
+{
+  "model": "tinyllama",
+  "created_at": "2025-05-09T19:34:00Z",
+  "response": "The sky is blue because of Rayleigh scattering.",
+  "done": true
+}
+            </pre>
+        </section>
+
+        <section>
+            <h2>Notes on Usage</h2>
+            <ul>
+                <li>No API key required, completely free.</li>
+                <li>No rate limits, but response speed may vary.</li>
+                <li>Scientific use encouraged (contact <a href="mailto:mlvoca@protonmail.com">mlvoca@protonmail.com</a>).</li>
+                <li>Commercial use is not allowed.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Disclaimer</h2>
+            <p>The API is provided "as is" without guarantees on accuracy or reliability. Users take full responsibility for usage.</p>
+        </section>
+
+        <footer>
+            <p>Visit <a href="https://mlvoca.com">mlvoca.com</a> for more details.</p>
+            <p>Contact: <a href="mailto:mlvoca@protonmail.com">mlvoca@protonmail.com</a></p>
+        </footer>
+    </main>
+</body>
+</html>
